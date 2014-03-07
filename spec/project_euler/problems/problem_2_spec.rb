@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Problem2 do
-  subject(:problem) {Problem2.new}
+describe Problems::Problem2 do
+  subject(:problem) {Problems::Problem2.new}
 
   it "the sum of even values in fibonacci from 1 to 5 should be 2" do
     problem.execute(5).should eq 2
