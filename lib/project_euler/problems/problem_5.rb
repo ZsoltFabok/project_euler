@@ -4,7 +4,7 @@ module Problems
   #
   # What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
   class Problem5
-    # I've check the prime factors of 2520 and it is possible to generate all
+    # I checked the prime factors of 2520 and it is possible to generate all
     # the numbers from 1 to 10 from them.
     #
     # So I'm taking the prime factors of each element between 1 and 'number' and get
