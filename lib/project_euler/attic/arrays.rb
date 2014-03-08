@@ -1,9 +1,5 @@
 module Attic
   class Arrays
-    def self.multiply_elements(array)
-      array.inject(:*)
-    end
-
     def self.variations(array)
       variations = []
       inner_variations(array, [], variations)

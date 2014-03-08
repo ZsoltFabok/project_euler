@@ -1,12 +1,6 @@
 require 'spec_helper'
 
 describe Attic::Arrays do
-  context "#multiply_elements" do
-    it "should multiply elements of array" do
-      Attic::Arrays.multiply_elements([2,3,5]).should eq 30
-    end
-  end
-
   context "#variations" do
     it "should return all variations for an array with 2 elements" do
       get_variations(["a", "b"]).should eq ["ab", "ba"]
