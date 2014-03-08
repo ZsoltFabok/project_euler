@@ -5,3 +5,4 @@ require File.expand_path("../../lib/project_euler", __FILE__)
 puts "problem 1 solution: #{Problems::Problem1.new.execute(1000)}"
 puts "problem 2 solution: #{Problems::Problem2.new.execute(4000000)}"
 puts "problem 3 solution: #{Problems::Problem3.new.execute(600851475143)}"
+puts "problem 4 solution: #{Problems::Problem4.new.execute(3)}"

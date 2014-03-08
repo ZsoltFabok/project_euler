@@ -1,5 +1,9 @@
 module Math
   class PrimeWithCache < Prime
+    def initialize
+      @cache_file_name = "data/prime_numbers.txt"
+    end
+
     def initialize(cache_file_name)
       @cache_file_name = cache_file_name
     end

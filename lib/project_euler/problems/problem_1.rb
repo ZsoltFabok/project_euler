@@ -11,7 +11,7 @@ module Problems
           multiples_of_3_5 << n
         end
       end
-      Common.sum(multiples_of_3_5)
+      Common::Arrays.sum(multiples_of_3_5)
     end
   end
 end

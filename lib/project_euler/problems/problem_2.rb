@@ -11,19 +11,14 @@ module Problems
       numbers = [1, 1]
       sum = 0
       begin
-        next_number = Common.sum(numbers)
-        if is_even?(next_number)
+        next_number = Common::Arrays.sum(numbers)
+        if next_number.even?
           sum += next_number
         end
         numbers << next_number
         numbers.shift
       end while (next_number < exceed_value)
       return sum
-    end
-
-    private
-    def is_even?(number)
-      number % 2 == 0
     end
   end
 end
