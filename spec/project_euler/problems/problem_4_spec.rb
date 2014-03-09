@@ -7,7 +7,7 @@ describe Problems::Problem4 do
     problem.execute(2).should eq 9009
   end
 
-  it "should return 906609 largest palindrome made from the product of two 3-digit numbers (913,993)" do
+  it "should return 906609 largest palindrome made from the product of two 3-digit numbers (913,993)", slow: true do
     problem.execute(3).should eq 906609
   end
 end

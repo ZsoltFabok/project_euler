@@ -19,7 +19,7 @@ describe Problems::Problem3 do
     problem.execute(13195).should eq 29
   end
 
-  it "should return 29 as the largest prime factor of 13195" do
+  it "should return 6857 as the largest prime factor of 600851475143", slow: true do
     problem.execute(600851475143).should eq 6857
   end
 end

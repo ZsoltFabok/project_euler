@@ -16,9 +16,8 @@ describe Math::Prime do
       prime.factorisation(13195).should eq [5, 7, 13, 29]
     end
 
-    it "should return [11, 90709] for 997799" # do
-    # this take a lot of time, I'll need all the primes under 1 million to speed it up
-    #   prime.factorisation(997799).should eq [11, 90709]
-    # end
+    it "should return [11, 90709] for 997799", slow: true do
+      prime.factorisation(997799).should eq [11, 90709]
+    end
   end
 end
