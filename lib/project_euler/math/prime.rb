@@ -23,9 +23,9 @@ module Math
       number
     end
 
-    # uses Wilson's Theorem
+    # uses Fermat's little theorem, with a = 2
     def is_prime?(number)
-      (Math::Factorial.get(number-1)+1) % number == 0
+      (2 ** number - 2) % number == 0
     end
   end
 end
