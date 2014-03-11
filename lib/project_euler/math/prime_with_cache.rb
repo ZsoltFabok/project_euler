@@ -1,43 +1,45 @@
 module Math
   class PrimeWithCache < Prime
-    def initialize
-      @cache_file_name = "data/prime_numbers.txt"
-    end
-
-    def initialize(cache_file_name)
-      @cache_file_name = cache_file_name
+    def initialize(cache)
+      @cache = cache
     end
 
     def is_prime?(number)
-      if @cache.nil?
-        load_cache
-      end
-
-      if @cache.include?(number)
+      @cache.load
+      if @cache.has?(number)
         return true
-      elsif !@cache.include?(number) && number < @cache.last
+      elsif !@cache.has?(number) && number < @cache.last
         return false
       elsif super(number)
-        save_in_cache(number)
+        @cache.save(number)
         return true
       end
       false
     end
 
-    private
-    def load_cache
-      @cache = []
-      File.open(@cache_file_name, "r") do |f|
-        f.readlines.each do |line|
-          @cache << line.to_i
-        end
+    def number_of_known_primes
+      @cache.load
+      @cache.size
+    end
+
+    def next_unknown_prime
+      @cache.load
+      if @cache.last
+        next_prime(@cache.last)
+      else
+        @cache.save(2)
+        return 2
       end
     end
 
-    def save_in_cache(number)
-      File.open(@cache_file_name, "a+") do |f|
-        f.write("#{number}\n")
-      end
+    def position_in_cache(number)
+      @cache.load
+      index = @cache.find(number)
+    end
+
+    def prime_at_position(position)
+      @cache.load
+      @cache.at(position)
     end
   end
 end

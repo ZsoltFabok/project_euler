@@ -5,7 +5,7 @@ module Problems
   class Problem3
 
     def execute(number)
-      primes = Math::PrimeWithCache.new("data/prime_numbers.txt").factorisation(number)
+      primes = Math::PrimeWithCache.new(Common::Cache.new("data/prime_numbers.txt")).factorisation(number)
       primes.last
     end
   end
