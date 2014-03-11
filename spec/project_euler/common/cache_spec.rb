@@ -73,9 +73,4 @@ describe Common::Cache do
     File.stub(:open).with(@file_name, "r").and_yield(@file)
     @file.stub(:readlines).and_return(numbers.map {|n| "#{n}\n"})
   end
-
-  def mock_cache_write(number)
-    File.stub(:open).with(@file_name, "a+").and_yield(@file)
-    @file.stub(:write).with("#{number}\n")
-  end
 end
