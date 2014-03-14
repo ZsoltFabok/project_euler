@@ -1,4 +1,4 @@
-module Math
+module Attic
   # implementation based on
   #  - http://en.wikipedia.org/wiki/Binary_GCD_algorithm
   #  - http://en.wikipedia.org/wiki/Greatest_common_divisor
