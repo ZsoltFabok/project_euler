@@ -25,7 +25,7 @@ module Problems
         end
       end
       reduce_bucket_size(buckets, number)
-      Common::Arrays.multiply_elements(buckets.flatten)
+      Common::Arrays.multiply(buckets.flatten)
     end
 
     private
@@ -41,7 +41,7 @@ module Problems
     private
     def reduce_bucket_size(buckets, n)
       buckets.each do |bucket|
-        while (Common::Arrays.multiply_elements(bucket) > n) do
+        while (Common::Arrays.multiply(bucket) > n) do
           bucket.pop
         end
       end

@@ -7,9 +7,9 @@ describe Common::Arrays do
     end
   end
 
-  context "#multiply_elements" do
+  context "#multiply" do
     it "should multiply elements of array" do
-      Common::Arrays.multiply_elements([2,3,5]).should eq 30
+      Common::Arrays.multiply([2,3,5]).should eq 30
     end
   end
 end

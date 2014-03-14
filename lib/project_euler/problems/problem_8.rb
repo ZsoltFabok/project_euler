@@ -27,7 +27,7 @@ module Problems
       max = 0
       (0..digits.size-1).each do |index|
         consecutive_digits = digits[index..index+4]
-        candidate = Common::Arrays.multiply_elements(consecutive_digits)
+        candidate = Common::Arrays.multiply(consecutive_digits)
         if candidate > max
           max = candidate
         end

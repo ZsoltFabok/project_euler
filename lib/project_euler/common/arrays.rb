@@ -4,7 +4,7 @@ module Common
       array.inject(:+)
     end
 
-    def self.multiply_elements(array)
+    def self.multiply(array)
       array.inject(:*)
     end
   end
