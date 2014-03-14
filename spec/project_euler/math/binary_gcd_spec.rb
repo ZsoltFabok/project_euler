@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Attic::BinaryGcd do
-  subject(:gcd) {Attic::BinaryGcd.new}
+describe Math::BinaryGcd do
+  subject(:gcd) {Math::BinaryGcd.new}
   it "returns 2 as gcd of 2 and 4" do
     gcd.gcd(2, 4).should eq 2
   end
