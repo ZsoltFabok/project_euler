@@ -5,7 +5,6 @@ module Math
     end
 
     def is_prime?(number)
-      @cache.load
       if @cache.has?(number)
         return true
       elsif !@cache.has?(number) && number < @cache.last
@@ -18,12 +17,10 @@ module Math
     end
 
     def number_of_known_primes
-      @cache.load
       @cache.size
     end
 
     def next_unknown_prime
-      @cache.load
       if @cache.last
         next_prime(@cache.last)
       else
@@ -33,12 +30,10 @@ module Math
     end
 
     def position_in_cache(number)
-      @cache.load
       index = @cache.find(number)
     end
 
     def prime_at_position(position)
-      @cache.load
       @cache.at(position)
     end
   end
