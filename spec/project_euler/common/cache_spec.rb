@@ -22,6 +22,15 @@ describe Common::Cache do
       @file.should_receive(:write).with("3\n")
       @cache.save(3)
     end
+
+    it "updates the cache with primes" do
+      mock_cache_file_content([2])
+      File.should_receive(:open).with(@file_name, "a+").and_yield(@file)
+      @file.should_receive(:write).with("3\n")
+      @file.should_receive(:write).with("5\n")
+      @file.should_receive(:write).with("7\n")
+      @cache.save([3, 5, 7])
+    end
   end
 
   context "#has" do
@@ -66,6 +75,13 @@ describe Common::Cache do
     it "returns the number at the given position" do
       mock_cache_file_content([3, 2])
       @cache.at(1).should eq 3
+    end
+  end
+
+  context "#get" do
+    it "returns all the numbers below the limit" do
+      mock_cache_file_content([2, 3, 5, 7])
+      @cache.get_until(5).should eq [2, 3, 5]
     end
   end
 

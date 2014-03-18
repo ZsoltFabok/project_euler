@@ -18,9 +18,18 @@ module Common
 
     def save(number)
       load
-      @cache << number
-      File.open(@file_name, "a+") do |f|
-        f.write("#{number}\n")
+      if number.class == Array
+        @cache.concat(number)
+        File.open(@file_name, "a+") do |f|
+          number.each do |n|
+            f.write("#{n}\n")
+          end
+        end
+      else
+        @cache << number
+        File.open(@file_name, "a+") do |f|
+          f.write("#{number}\n")
+        end
       end
     end
 
@@ -47,6 +56,11 @@ module Common
     def at(index)
       load
       @cache[index]
+    end
+
+    def get_until(limit)
+      load
+      @cache.select {|n| n <= limit}
     end
   end
 end
