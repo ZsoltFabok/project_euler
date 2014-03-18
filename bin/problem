@@ -2,13 +2,13 @@
 
 require File.expand_path("../../lib/project_euler", __FILE__)
 
-puts "problem 1 solution: #{Problems::Problem1.new.execute(1000)}"
-puts "problem 2 solution: #{Problems::Problem2.new.execute(4000000)}"
-puts "problem 3 solution: #{Problems::Problem3.new.execute(600851475143)}"
-puts "problem 4 solution: #{Problems::Problem4.new.execute(3)}"
-puts "problem 5 solution: #{Problems::Problem5.new.execute(20)}"
-puts "problem 6 solution: #{Problems::Problem6.new.execute(100)}"
-puts "problem 7 solution: #{Problems::Problem7.new.execute(10001)}"
+puts "problem  1 solution: #{Problems::Problem1.new.execute(1000)}"
+puts "problem  2 solution: #{Problems::Problem2.new.execute(4000000)}"
+puts "problem  3 solution: #{Problems::Problem3.new.execute(600851475143)}"
+puts "problem  4 solution: #{Problems::Problem4.new.execute(3)}"
+puts "problem  5 solution: #{Problems::Problem5.new.execute(20)}"
+puts "problem  6 solution: #{Problems::Problem6.new.execute(100)}"
+puts "problem  7 solution: #{Problems::Problem7.new.execute(10001)}"
 
 number = "73167176531330624919225119674426574742355349194934" \
          "96983520312774506326239578318016984801869478851843" \
@@ -30,4 +30,6 @@ number = "73167176531330624919225119674426574742355349194934" \
          "84580156166097919133875499200524063689912560717606" \
          "05886116467109405077541002256983155200055935729725" \
          "71636269561882670428252483600823257530420752963450"
-puts "problem 8 solution: #{Problems::Problem8.new.execute(number)}"
+puts "problem  8 solution: #{Problems::Problem8.new.execute(number)}"
+puts "problem  9 solution: #{Problems::Problem9.new.execute(1000)}"
+puts "problem 10 solution: #{Problems::Problem10.new.execute(2000000)}"

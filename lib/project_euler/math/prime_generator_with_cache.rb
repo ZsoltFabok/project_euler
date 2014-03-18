@@ -5,11 +5,11 @@ module Math
     end
 
     def primes(limit)
-      if @cache.last <= limit
+      if @cache.last >= limit
         return @cache.get_until(limit)
       else
         primes = super(limit)
-        @cache.save(primes[primes.index_of(@cache.last)..-1])
+        @cache.save(primes[primes.index(@cache.last)+1..-1])
         return primes
       end
     end
