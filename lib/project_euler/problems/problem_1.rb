@@ -4,7 +4,11 @@ module Problems
   #
   # Find the sum of all the multiples of 3 or 5 below 1000.
   class Problem1
-    def execute(number)
+    def execute
+      calculate(1000)
+    end
+
+    def calculate(number)
       multiples_of_3_5 = []
       (1..number-1).each do |n|
         if n % 3 == 0 || n % 5 == 0

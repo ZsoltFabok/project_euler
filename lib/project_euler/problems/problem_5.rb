@@ -4,6 +4,10 @@ module Problems
   #
   # What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
   class Problem5
+    def execute
+      calculate(20)
+    end
+
     # I checked the prime factors of 2520 and it is possible to generate all
     # the numbers from 1 to 10 from them.
     #
@@ -12,7 +16,7 @@ module Problems
     # number 20 I'll end up with [2, 2, 2, 2, 2, 2, 2, 2] which is too much because I can
     # generate 256 from these 2s. So, I'm reducing the number of 2s until only numbers below 'number'
     # can be generated from them (because I'll need the smallest number)
-    def execute(number)
+    def calculate(number)
       buckets = []
       (1..number).each do |n|
         Math::Prime.new.factorisation(n).each do |prime_factor|

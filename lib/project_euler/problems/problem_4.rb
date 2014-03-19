@@ -4,7 +4,11 @@ module Problems
   #
   # Find the largest palindrome made from the product of two 3-digit numbers.
   class Problem4
-    def execute(digits)
+    def execute
+      calculate(3)
+    end
+
+    def calculate(digits)
       number = (10 ** digits - 1)
       end_ = 10 ** (digits - 1)
       best_candidate = -1

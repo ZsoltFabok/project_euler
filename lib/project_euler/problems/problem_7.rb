@@ -4,7 +4,11 @@ module Problems
   #
   # What is the 10001st prime number?
   class Problem7
-    def execute(number)
+    def execute
+      calculate(10001)
+    end
+
+    def calculate(number)
       prime_handler = Math::PrimeWithCache.new(Common::Cache.new("data/prime_numbers.txt"))
       if number > prime_handler.number_of_known_primes
         while (prime_handler.number_of_known_primes <= number-1) do

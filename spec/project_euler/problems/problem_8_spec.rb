@@ -4,7 +4,7 @@ describe Problems::Problem8 do
   subject(:problem) {Problems::Problem8.new}
 
   it "returns 7560 (79385) as the greatest product of five consecutive digits in 793856" do
-    problem.execute("793856").should eq 7560
+    problem.calculate("793856").should eq 7560
   end
 
   it "returns X for the 1000 long number given in the problem" do
@@ -28,6 +28,6 @@ describe Problems::Problem8 do
              "84580156166097919133875499200524063689912560717606" \
              "05886116467109405077541002256983155200055935729725" \
              "71636269561882670428252483600823257530420752963450"
-    problem.execute(number).should eq 40824
+    problem.calculate(number).should eq 40824
   end
 end
