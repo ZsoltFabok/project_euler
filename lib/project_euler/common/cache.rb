@@ -35,7 +35,7 @@ module Common
 
     def has?(number)
       load
-      @cache.include?(number)
+      Common::Arrays.binary_search(number, @cache) != nil
     end
 
     def last
