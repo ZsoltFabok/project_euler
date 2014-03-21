@@ -31,6 +31,12 @@ describe Math::PrimeWithCache do
     end
 
     describe "#number_of_known_primes" do
+      it "looks for the first [un]known prime" do
+        @cache.should_receive(:last).and_return(nil)
+        @cache.should_receive(:save).with(2)
+        @prime.next_unknown_prime.should eq 2
+      end
+
       it "looks for the next unknown prime" do
         @cache.should_receive(:last).exactly(4).times.and_return(3)
         @cache.should_receive(:has?).exactly(2).times.with(4).and_return false

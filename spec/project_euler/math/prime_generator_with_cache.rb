@@ -8,8 +8,14 @@ describe Math::PrimeGeneratorWithCache do
     end
 
     context "#primes" do
-      it "uses the prime cache" do
+      it "uses the prime cache to return a subset of primes" do
         @cache.should_receive(:last).and_return(11)
+        @cache.should_receive(:get_until).with(7).and_return [2, 3, 5, 7]
+        @prime.primes(7).should eq [2, 3, 5, 7]
+      end
+
+      it "uses the prime cache to return all the primes" do
+        @cache.should_receive(:last).and_return(7)
         @cache.should_receive(:get_until).with(7).and_return [2, 3, 5, 7]
         @prime.primes(7).should eq [2, 3, 5, 7]
       end
