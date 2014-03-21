@@ -18,7 +18,7 @@ end
 overall_time = 0
 (start..end_).each do |number|
   result = nil
-  time = Benchmark.realtime{result = eval("Problems::Problem#{number}.new.execute")}
+  time = Benchmark.realtime{result = eval("Problems::Problem#{number}.execute")}
   puts "problem #{number} result: #{result} (#{humanize_time(time)})"
   overall_time += time
 end

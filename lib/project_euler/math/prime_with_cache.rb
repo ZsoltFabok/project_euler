@@ -36,5 +36,9 @@ module Math
     def prime_at_position(position)
       @cache.at(position)
     end
+
+    def self.create(file_name)
+      new(Common::Cache.create(file_name))
+    end
   end
 end

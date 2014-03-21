@@ -1,12 +1,16 @@
 module Problems
   class Problem10
-    def execute
-      calculate(2000000)
+    def initialize(prime_generator)
+      @prime_generator = prime_generator
+    end
+
+    def self.execute
+      cache = Math::PrimeGeneratorWithCache.create("data/prime_numbers.txt")
+      new(cache).calculate(2000000)
     end
 
     def calculate(number)
-      generator = Math::PrimeGeneratorWithCache.new(Common::Cache.new("data/prime_numbers.txt"))
-      generator.primes(number).inject(:+)
+      @prime_generator.primes(number).inject(:+)
     end
   end
 end

@@ -4,8 +4,12 @@ module Problems
   #
   # Find the sum of all the multiples of 3 or 5 below 1000.
   class Problem1
-    def execute
-      calculate(1000)
+    def initialize(arrays)
+      @arrays = arrays
+    end
+
+    def self.execute
+      new(Common::Arrays.new).calculate(1000)
     end
 
     def calculate(number)
@@ -15,7 +19,7 @@ module Problems
           multiples_of_3_5 << n
         end
       end
-      Common::Arrays.sum(multiples_of_3_5)
+      @arrays.sum(multiples_of_3_5)
     end
   end
 end

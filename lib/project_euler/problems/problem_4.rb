@@ -4,8 +4,12 @@ module Problems
   #
   # Find the largest palindrome made from the product of two 3-digit numbers.
   class Problem4
-    def execute
-      calculate(3)
+    def initialize(number)
+      @number = number
+    end
+
+    def self.execute
+      new(Common::Number.new).calculate(3)
     end
 
     def calculate(digits)
@@ -15,7 +19,7 @@ module Problems
       (end_..number).reverse_each do |first|
         (end_..number).reverse_each do |second|
           candidate = first * second
-          if Common::Number.is_palindromic?(candidate) && candidate > best_candidate
+          if @number.is_palindromic?(candidate) && candidate > best_candidate
             best_candidate = candidate
           end
         end

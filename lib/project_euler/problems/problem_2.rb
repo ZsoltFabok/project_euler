@@ -7,15 +7,19 @@ module Problems
   # By considering the terms in the Fibonacci sequence whose values do not exceed four million,
   # find the sum of the even-valued terms.
   class Problem2
-    def execute
-      calculate(4000000)
+    def initialize(arrays)
+      @arrays = arrays
+    end
+
+    def self.execute
+      new(Common::Arrays.new).calculate(4000000)
     end
 
     def calculate(exceed_value)
       numbers = [1, 1]
       sum = 0
       begin
-        next_number = Common::Arrays.sum(numbers)
+        next_number = @arrays.sum(numbers)
         if next_number.even?
           sum += next_number
         end

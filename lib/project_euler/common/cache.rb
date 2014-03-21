@@ -1,7 +1,8 @@
 module Common
   class Cache
-    def initialize(file_name)
+    def initialize(file_name, arrays)
       @file_name = file_name
+      @arrays = arrays
     end
 
     def load
@@ -35,7 +36,7 @@ module Common
 
     def has?(number)
       load
-      Common::Arrays.binary_search(number, @cache) != nil
+      @arrays.binary_search(number, @cache) != nil
     end
 
     def last
@@ -61,6 +62,10 @@ module Common
     def get_until(limit)
       load
       @cache.select {|n| n <= limit}
+    end
+
+    def self.create(file_name)
+      new(file_name, Common::Arrays.new)
     end
   end
 end

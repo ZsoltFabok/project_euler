@@ -4,8 +4,13 @@ module Problems
   #
   # What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
   class Problem5
-    def execute
-      calculate(20)
+    def initialize(prime, arrays)
+      @prime = prime
+      @arrays = arrays
+    end
+
+    def self.execute
+      new(Math::Prime.new, Common::Arrays.new).calculate(20)
     end
 
     # I checked the prime factors of 2520 and it is possible to generate all
@@ -19,7 +24,7 @@ module Problems
     def calculate(number)
       buckets = []
       (1..number).each do |n|
-        Math::Prime.new.factorisation(n).each do |prime_factor|
+        @prime.factorisation(n).each do |prime_factor|
           bucket = find_bucket(buckets, prime_factor)
           if bucket.nil?
             bucket = []
@@ -29,7 +34,7 @@ module Problems
         end
       end
       reduce_bucket_size(buckets, number)
-      Common::Arrays.multiply(buckets.flatten)
+      @arrays.multiply(buckets.flatten)
     end
 
     private
@@ -45,7 +50,7 @@ module Problems
     private
     def reduce_bucket_size(buckets, n)
       buckets.each do |bucket|
-        while (Common::Arrays.multiply(bucket) > n) do
+        while (@arrays.multiply(bucket) > n) do
           bucket.pop
         end
       end

@@ -74,4 +74,10 @@ describe Math::PrimeWithCache do
       end
     end
   end
+
+  context "factories (#create)" do
+    it "creates a new instance with file cache" do
+      Math::PrimeWithCache.create(@file_name).class.should eq Math::PrimeWithCache
+    end
+  end
 end

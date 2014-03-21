@@ -1,14 +1,14 @@
 module Common
   class Arrays
-    def self.sum(array)
+    def sum(array)
       array.inject(:+)
     end
 
-    def self.multiply(array)
+    def multiply(array)
       array.inject(:*)
     end
 
-    def self.binary_search(number, array)
+    def binary_search(number, array)
         middle_index = array.size / 2
         if number < array[middle_index]
           if number >= array.first

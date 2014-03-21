@@ -13,5 +13,9 @@ module Math
         return primes
       end
     end
+
+    def self.create(file_name)
+      new(Common::Cache.create(file_name))
+    end
   end
 end

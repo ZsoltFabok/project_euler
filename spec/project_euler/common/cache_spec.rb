@@ -3,8 +3,9 @@ require 'spec_helper'
 describe Common::Cache do
   before(:each) do
     @file_name = "file name"
-    @cache = Common::Cache.new(@file_name)
     @file = double
+    @arrays = double
+    @cache = Common::Cache.new(@file_name, @arrays)
   end
 
   context "#load" do
@@ -33,14 +34,16 @@ describe Common::Cache do
     end
   end
 
-  context "#has" do
+  context "#has?" do
     it "returns true if the cache has the given number" do
       mock_cache_file_content([3, 2])
+      @arrays.should_receive(:binary_search).with(3, [2, 3]).and_return(1)
       @cache.has?(3).should be_true
     end
 
     it "returns false if the cache does not have the given number" do
       mock_cache_file_content([3, 2])
+      @arrays.should_receive(:binary_search).with(5, [2, 3]).and_return(nil)
       @cache.has?(5).should be_false
     end
   end
@@ -82,6 +85,12 @@ describe Common::Cache do
     it "returns all the numbers below the limit" do
       mock_cache_file_content([2, 3, 5, 7])
       @cache.get_until(5).should eq [2, 3, 5]
+    end
+  end
+
+  context "factories (#create)" do
+    it "creates a new instance" do
+      Common::Cache.create(@file_name).class.should eq Common::Cache
     end
   end
 
