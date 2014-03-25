@@ -61,20 +61,16 @@ module Problems
       (0..grid.size-1).each do |i|
         (0..grid[i].size-1).each do |j|
           if i <= grid.size-4 && j <= grid[i].size-4 # diagonal down makes sense
-            diagonal_down = [grid[i][j], grid[i+1][j+1], grid[i+2][j+2], grid[i+3][j+3]]
-            max = get_max(max, @arrays.multiply(diagonal_down))
+            max = max_of_max_and_numbers_in_grid(max, grid, i, j, i+1, j+1, i+2, j+2, i+3, j+3)
           end
           if i >= 3 && j <= grid.size-4 # diagonal up makes sense
-            diagonal_up = [grid[i][j], grid[i-1][j+1], grid[i-2][j+2], grid[i-3][j+3]]
-            max = get_max(max, @arrays.multiply(diagonal_up))
+            max = max_of_max_and_numbers_in_grid(max, grid, i, j, i-1, j+1, i-2, j+2, i-3, j+3)
           end
           if i <= grid.size-4 # vertical makes sense
-            vertical = [grid[i][j], grid[i+1][j], grid[i+2][j], grid[i+3][j]]
-            max = get_max(max, @arrays.multiply(vertical))
+            max = max_of_max_and_numbers_in_grid(max, grid, i, j, i+1, j, i+2, j, i+3, j)
           end
           if j <= grid[i].size-4 # horisontal makes sense
-            horisontal = [grid[i][j], grid[i][j+1], grid[i][j+2], grid[i][j+3]]
-            max = get_max(max, @arrays.multiply(horisontal))
+            max = max_of_max_and_numbers_in_grid(max, grid, i, j, i, j+1, i, j+2, i, j+3)
           end
         end
       end
@@ -98,6 +94,14 @@ module Problems
 
     def get_max(first, second)
       [first, second].max
+    end
+
+    def max_of_max_and_numbers_in_grid(max, grid, *coordinates)
+      entry = []
+      (0..coordinates.size-1).step(2).each do |i|
+        entry << grid[coordinates[i]][coordinates[i+1]]
+      end
+      get_max(max, @arrays.multiply(entry))
     end
   end
 end
