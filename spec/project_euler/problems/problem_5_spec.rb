@@ -2,15 +2,15 @@ require 'spec_helper'
 
 describe Problems::Problem5 do
   context "#calculate" do
-    let(:prime) {double}
+    let(:prime_factors) {double}
     let(:arrays) {double}
-    subject(:problem) {Problems::Problem5.new(prime, arrays)}
+    subject(:problem) {Problems::Problem5.new(prime_factors, arrays)}
 
     it "2520 is the smallest number that can be divided by each of the numbers from 1 to 10" do
       factors = {1 => [1], 2 => [2], 3 => [3], 4 => [2, 2], 5 => [5], 6 => [2, 3],
                  7 => [7], 8 => [2, 2, 2], 9 => [3, 3], 10 => [2, 5]}
       factors.each do |number, factor|
-        prime.should_receive(:factorisation).with(number).and_return(factor)
+        prime_factors.should_receive(:factors).with(number).and_return(factor)
       end
       arrays.should_receive(:multiply).with([1]).and_return(1)
       arrays.should_receive(:multiply).with([2, 2, 2, 2, 2, 2, 2, 2]).and_return(2**8)

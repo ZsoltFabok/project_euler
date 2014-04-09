@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe Problems::Problem9 do
-
-
   context "#calculate" do
     let(:pythagorean_triples) {double}
     let(:arrays) {double}

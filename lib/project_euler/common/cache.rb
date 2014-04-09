@@ -34,9 +34,19 @@ module Common
       end
     end
 
+    def empty?
+      load
+      @cache.empty?
+    end
+
     def has?(number)
       load
-      @arrays.binary_search(number, @cache) != nil
+      find(number) != nil
+    end
+
+    def sub(range)
+      load
+      @cache[range]
     end
 
     def last
@@ -44,28 +54,38 @@ module Common
       @cache.last
     end
 
-    def size
-      load
-      @cache.size
-    end
-
     def find(number)
       load
-      @cache.find_index(number)
+      @arrays.binary_search(number, @cache)
     end
 
-    def at(index)
+    # def get(position)
+    #   load
+    #   @cache[position]
+    # end
+
+    def enumerator
       load
-      @cache[index]
+      Enumerator.new(@cache)
     end
 
-    def get_until(limit)
-      load
-      @cache.select {|n| n <= limit}
+    def self.create
+      new("data/prime_numbers.txt", Common::Arrays.new)
     end
 
-    def self.create(file_name)
-      new(file_name, Common::Arrays.new)
+    class Enumerator
+      def initialize(cache)
+        @cache = cache
+        reset
+      end
+
+      def next
+        @cache[@position+=1]
+      end
+
+      def reset
+        @position = -1
+      end
     end
   end
 end

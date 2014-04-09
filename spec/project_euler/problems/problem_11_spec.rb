@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Problems::Problem11 do
-
   context "#calculate" do
     let(:arrays) {double}
     subject(:problem) {Problems::Problem11.new(arrays)}

@@ -3,13 +3,13 @@ require 'spec_helper'
 describe Common::Arrays do
   subject(:arrays) {Common::Arrays.new}
   context "#sum" do
-    it "should return the sum of elements of a given array" do
+    it "returns the sum of elements of a given array" do
       arrays.sum([1, 2, 3]).should eq 6
     end
   end
 
   context "#multiply" do
-    it "should multiply elements of array" do
+    it "multiplies elements of array" do
       arrays.multiply([2,3,5]).should eq 30
     end
   end
@@ -45,6 +45,10 @@ describe Common::Arrays do
 
     it "doesn't find 6 in [2, 3, 4, 5, 7]" do
       arrays.binary_search(6, [2, 3, 4, 5, 7]).should eq nil
+    end
+
+    it "returns nil for an empty array" do
+      arrays.binary_search(3, []).should eq nil
     end
   end
 end

@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe Problems::Problem4 do
-
-
   context "#calculate" do
     let(:number) {double}
     subject(:problem) {Problems::Problem4.new(number)}

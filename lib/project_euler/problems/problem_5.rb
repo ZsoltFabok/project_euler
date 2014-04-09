@@ -10,7 +10,10 @@ module Problems
     end
 
     def self.execute
-      new(Math::Prime.new, Common::Arrays.new).calculate(20)
+      cache = Common::Cache.create
+      prime_factors = Math::PrimeFactorsCached.create(cache)
+      arrays = Common::Arrays.new
+      new(prime_factors, arrays).calculate(20)
     end
 
     # I checked the prime factors of 2520 and it is possible to generate all
@@ -24,7 +27,7 @@ module Problems
     def calculate(number)
       buckets = []
       (1..number).each do |n|
-        @prime.factorisation(n).each do |prime_factor|
+        @prime.factors(n).each do |prime_factor|
           bucket = find_bucket(buckets, prime_factor)
           if bucket.nil?
             bucket = []

@@ -3,18 +3,19 @@ module Problems
   #
   # What is the largest prime factor of the number 600851475143 ?
   class Problem3
-    def initialize(prime)
-      @prime = prime
+    def initialize(prime_factors)
+      @prime_factors = prime_factors
     end
 
     def self.execute
-      prime_with_cache = Math::PrimeWithCache.create("data/prime_numbers.txt")
-      new(prime_with_cache).calculate(600851475143)
+      cache = Common::Cache.create
+      prime_factors = Math::PrimeFactorsCached.create(cache)
+      new(prime_factors).calculate(600851475143)
     end
 
     def calculate(number)
-      primes = @prime.factorisation(number)
-      primes.last
+      factors = @prime_factors.factors(number)
+      factors.last
     end
   end
 end

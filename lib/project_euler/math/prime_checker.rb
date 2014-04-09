@@ -1,40 +1,26 @@
 module Math
-  class Prime
-    def factorisation(number)
-      current_prime = 2
-      primes = []
-      while (number != 1)
-        if number % current_prime == 0
-          primes << current_prime
-          number /= current_prime
-        else
-          current_prime = next_prime(current_prime)
-        end
-      end
-      primes
-    end
-
-    def next_prime(number)
-      number += 1
-      while (!is_prime?(number)) do
-        number += 1
-      end
-      number
-    end
-
+	class PrimeChecker
     # uses Fermat's little theorem, with a = 2
     def is_prime?(number)
-      a = 2
-      if (a ** (number - 1) - 1) % number == 0
-        if is_pseudoprime?(number)
-          return false
+      if number > 2
+        a = 2
+        if (a ** (number - 1) - 1) % number == 0
+          if is_pseudoprime?(number)
+            return false
+          end
+          return true
         end
+        return false
+      else
         return true
       end
-      return  false
     end
 
-    protected
+    def self.create
+    	new
+    end
+
+    private
     def is_pseudoprime?(number)
       number_sqrt = Math.sqrt(number).to_i
       divisors = (1..number_sqrt).to_a.delete_if do |n|
@@ -57,5 +43,5 @@ module Math
       end
       false
     end
-  end
+	end
 end
