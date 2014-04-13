@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe Math::CollatzSequence do
+describe Attic::CollatzSequence do
 	context "unit" do
-		subject(:collatz_sequence) {Math::CollatzSequence.new}
+		subject(:collatz_sequence) {Attic::CollatzSequence.new}
 
 		it "returns [1] for 1" do
 			collatz_sequence.get(1).should eq [1]
@@ -18,7 +18,7 @@ describe Math::CollatzSequence do
 	end
 
 	context "integration" do
-		subject(:collatz_sequence) {Math::CollatzSequence.new}
+		subject(:collatz_sequence) {Attic::CollatzSequence.new}
 
 		it "returns N for x" do
 		end

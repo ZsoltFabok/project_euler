@@ -1,4 +1,4 @@
-module Math
+module Attic
 	class CollatzSequence
 		def get(number)
 			sequence = [number]

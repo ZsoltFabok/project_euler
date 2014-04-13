@@ -14,25 +14,43 @@ module Problems
   #
 	# NOTE: Once the chain starts the terms are allowed to go above one million.
 	class Problem14
-		def initialize(collatz_sequence)
-			@collatz_sequence = collatz_sequence
-		end
-
 		def self.execute
-			new(Math::CollatzSequence.new).calculate(1000000)
+			new.calculate(1000000)
 		end
 
+		# The method uses a cache to reduce calculation time: if it finds a number
+		# that already has a calculated length, it will stop and simply add the so
+		# far calculated length to the pre-cached calculated length.
+		# Moreover, it skips even numbers, because the longest sequenceses start
+		# with an odd number.
 		def calculate(number)
-			max_length = 0
 			number_with_max_length = 1
-			(1..number).each do |candidate|
-				current_length = @collatz_sequence.get(candidate).size
-				if current_length > max_length
-					max_length = current_length
-					number_with_max_length = candidate
+			lengths = {1=>1, 2=>2}
+			(3..number).step(2).each do |n|
+				length = 0
+				entry = n
+				while !lengths.key?(entry) do
+					entry = collatz_sequence_next_element(entry)
+					length += 1
+				end
+
+				lengths[n] = length + lengths[entry]
+
+				if lengths[number_with_max_length] < lengths[n]
+					number_with_max_length = n
 				end
 			end
-			number_with_max_length
+			return number_with_max_length
+		end
+
+		private
+		def collatz_sequence_next_element(entry)
+			if entry.even?
+				entry /= 2
+			else
+				entry = entry * 3 + 1
+			end
+			entry
 		end
 	end
 end
