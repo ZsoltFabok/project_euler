@@ -6,38 +6,38 @@ module Common
 
     def in_letters(number)
     	letters = ""
-			if number >= 1000
-				letters += "#{NUMBERS_TO_LETTERS[number / 1000]} #{NUMBERS_TO_LETTERS[1000]}"
-				if number % 1000 != 0
-					letters << " "
-				end
-				number -= (number / 1000) * 1000
-			end
-
-			if number >= 100
-				letters += "#{NUMBERS_TO_LETTERS[number / 100]} #{NUMBERS_TO_LETTERS[100]}"
-				if number % 100 != 0
-					letters << " and "
-				end
-				number -= (number / 100) * 100
-			end
-
-			if number > 20
-				letters += "#{NUMBERS_TO_LETTERS[(number / 10) * 10]}"
-				if number % 10 != 0
-					letters << "-"
-				end
-				number -= (number / 10) * 10
-			end
-
-			if number > 0
-				letters << NUMBERS_TO_LETTERS[number]
-			end
+    	number, letters = handle_the_places_above(1000, number, letters, " ")
+    	number, letters = handle_the_places_above( 100, number, letters, " and ")
+			number, letters = handle_the_places_above(  20, number, letters, "-")
+			number, letters = handle_the_leftover(number, letters)
 
 			letters
     end
 
     private
+		def handle_the_places_above(places, number, letters, separator)
+			if number >= places
+				if places != 20
+					letters += "#{NUMBERS_TO_LETTERS[number / places]} #{NUMBERS_TO_LETTERS[places]}"
+				else
+					places = 10
+					letters += "#{NUMBERS_TO_LETTERS[(number / places) * places]}"
+				end
+				if number % places != 0
+					letters << separator
+				end
+				number -= (number / places) * places
+			end
+			[number, letters]
+		end
+
+		def handle_the_leftover(number, letters)
+			if number > 0
+				letters += "#{NUMBERS_TO_LETTERS[number]}"
+			end
+			[number, letters]
+		end
+
     NUMBERS_TO_LETTERS =
 				{1 => "one",
 		     2 => "two",
