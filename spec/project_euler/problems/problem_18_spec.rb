@@ -22,7 +22,7 @@ describe Problems::Problem18 do
   end
 
   context "#execute" do
-    it "the maximum total from top to bottom of the provided" do
+    it "the maximum total from top to bottom of the provided triangle" do
       Problems::Problem18.execute.should eq 1074
     end
   end
