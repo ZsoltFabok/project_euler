@@ -1,5 +1,3 @@
-require 'date'
-
 module Problems
   # You are given the following information, but you may prefer to do some research for yourself.
 
@@ -19,17 +17,63 @@ module Problems
       new.calculate("1901-01-01", "2000-12-31")
     end
 
+    # Note: I won't use the date function to get the week day of a certain date
     def calculate(from_date, to_date)
-      d1 = Date.parse(from_date)
-      d2 = Date.parse(to_date)
-      counter = 0
-      while (d1 <= d2)
-        if d1.cwday == 7 && d1.day == 1
-          counter +=1
+      calendar_days_between(from_date, to_date)
+    end
+
+    private
+    def number_of_days_before(date)
+      year, month = parse("1900-01-01")
+      number_of_days_before = 0 # 1900.01.01 was a Monday
+      while (to_date(year, month) < date)
+        number_of_days_before += numbers_of_days_in_month(year)[month-1]
+        if month == numbers_of_days_in_month(year).size
+          month = 0
+          year+=1
         end
-        d1 += 1
+        month+=1
       end
-      counter
+      number_of_days_before
+    end
+
+    def calendar_days_between(from_date, to_date, &action)
+      first_month_of_the_month_is_sunday = 0
+      first_day_of_the_month = number_of_days_before(from_date)
+
+      year, month = parse(from_date)
+      to_year, to_month = parse(to_date)
+      while (to_date(year, month) <= to_date(to_year, to_month-1))
+        first_day_of_the_month += numbers_of_days_in_month(year)[month-1]
+        if first_day_of_the_month % 7 == 6
+          first_month_of_the_month_is_sunday +=1
+        end
+        if month == numbers_of_days_in_month(year).size
+          month = 1
+          year+=1
+        else
+          month+=1
+       end
+      end
+      first_month_of_the_month_is_sunday
+    end
+
+    def numbers_of_days_in_month(year)
+      february = 28
+      if (year % 4 == 0 && year % 100 != 0) || year % 400 == 0
+        february = 29
+      end
+
+      [31, february, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    end
+
+    def parse(date)
+      date =~ /([0-9]+)-([0-9]+)/
+      [$1.to_i, $2.to_i]
+    end
+
+    def to_date(year, month)
+      "#{year}-#{month.to_s.rjust(2,'0')}-01"
     end
   end
 end
