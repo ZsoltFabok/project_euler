@@ -22,7 +22,7 @@ describe Problems::Problem19 do
   end
 
   context "#execute" do
-    it "N Sundays fell on the first of the month during the twentieth century" do
+    it "171 Sundays fell on the first of the month during the twentieth century" do
       Problems::Problem19.execute.should eq 171
     end
   end
