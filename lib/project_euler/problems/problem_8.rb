@@ -22,8 +22,9 @@ module Problems
   # 05886116467109405077541002256983155200055935729725
   # 71636269561882670428252483600823257530420752963450
   class Problem8
-    def initialize(arrays)
+    def initialize(arrays, number)
       @arrays = arrays
+      @number = number
     end
 
     def self.execute
@@ -47,11 +48,11 @@ module Problems
                "84580156166097919133875499200524063689912560717606" \
                "05886116467109405077541002256983155200055935729725" \
                "71636269561882670428252483600823257530420752963450"
-      new(Common::Arrays.new).calculate(number)
+      new(Common::Arrays.new, Common::Number.new).calculate(number)
     end
 
     def calculate(number)
-      digits = number.split('').map {|n| n.to_i}
+      digits = @number.digits(number.to_i)
       max = 0
       (0..digits.size-1).each do |index|
         consecutive_digits = digits[index..index+4]

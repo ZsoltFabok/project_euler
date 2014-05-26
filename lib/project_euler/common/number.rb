@@ -4,6 +4,10 @@ module Common
       number.to_s == number.to_s.reverse
     end
 
+    def digits(number)
+    	number.to_s.split('').map {|n| n.to_i}
+    end
+
     def in_letters(number)
     	letters = ""
     	number, letters = handle_the_places_above(1000, number, letters, " ")

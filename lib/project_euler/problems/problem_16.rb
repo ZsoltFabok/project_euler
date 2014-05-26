@@ -3,16 +3,17 @@ module Problems
   #
   # What is the sum of the digits of the number 2^1000?
   class Problem16
-    def initialize(arrays)
+    def initialize(arrays, number)
       @arrays = arrays
+      @number = number
     end
 
     def self.execute
-      new(Common::Arrays.new).calculate(1000)
+      new(Common::Arrays.new, Common::Number.new).calculate(1000)
     end
 
     def calculate(number)
-      @arrays.sum((2**number).to_s.split('').map {|n| n.to_i})
+      @arrays.sum(@number.digits(2**number))
     end
   end
 end

@@ -58,5 +58,15 @@ describe Common::Number do
 	      number.in_letters(5701).should eq "five thousand seven hundred and one"
 	    end
 	  end
+
+	  describe "#digits" do
+	  	it "returns [1] for 1" do
+	  		number.digits(1).should eq [1]
+	  	end
+
+	  	it "returns [1,2] for 12" do
+	  		number.digits(12).should eq [1,2]
+	  	end
+	  end
 	end
 end

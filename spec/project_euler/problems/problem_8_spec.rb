@@ -3,10 +3,12 @@ require 'spec_helper'
 describe Problems::Problem8 do
   context "#calculate" do
     let(:arrays) {double}
-    subject(:problem) {Problems::Problem8.new(arrays)}
+    let(:number) {double}
+    subject(:problem) {Problems::Problem8.new(arrays, number)}
 
     it "returns 7560 (79385) as the greatest product of five consecutive digits in 793856" do
       arrays.should_receive(:multiply).with([7, 9, 3, 8, 5]).and_return(7560)
+      number.should_receive(:digits).with(793856).and_return([7, 9, 3, 8, 5, 6])
       arrays.should_receive(:multiply).with([9, 3, 8, 5, 6]).and_return(6480)
       arrays.should_receive(:multiply).with([3, 8, 5, 6]).and_return(720)
       arrays.should_receive(:multiply).with([8, 5, 6]).and_return(240)

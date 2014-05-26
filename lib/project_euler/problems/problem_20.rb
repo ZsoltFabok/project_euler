@@ -6,17 +6,18 @@ module Problems
   #
   # Find the sum of the digits in the number 100!
   class Problem20
-    def initialize(arrays, factorial)
+    def initialize(arrays, factorial, number)
       @arrays = arrays
       @factorial = factorial
+      @number = number
     end
 
     def self.execute
-      new(Common::Arrays.new, Math::Factorial).calculate(100)
+      new(Common::Arrays.new, Math::Factorial, Common::Number.new).calculate(100)
     end
 
     def calculate(number)
-      @arrays.sum(@factorial.get(number).to_s.split('').map{|n| n.to_i})
+      @arrays.sum(@number.digits(@factorial.get(number)))
     end
   end
 end
