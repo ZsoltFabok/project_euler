@@ -13,7 +13,7 @@ module Problems
     end
 
     def self.execute
-      new(Common::Arrays.new, Math::Factorial, Common::Number.new).calculate(100)
+      new(Common::Arrays.new, Math::Factorial.new, Common::Number.new).calculate(100)
     end
 
     def calculate(number)
