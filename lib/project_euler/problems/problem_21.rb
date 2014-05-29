@@ -14,7 +14,7 @@ module Problems
     end
 
     def self.execute
-      new(Math::DivisorsCached.create(Common::Cache.create), Common::Arrays.new).calculate(10)
+      new(Math::DivisorsCached.create(Common::Cache.create), Common::Arrays.new).calculate(10000)
     end
 
     def calculate(number)
