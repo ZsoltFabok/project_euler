@@ -8,27 +8,27 @@ describe Math::PrimeCheckerCached do
     describe "#is_prime?" do
       it "returns true for 3 when 3 is stored in the cache" do
         cache.should_receive(:has?).with(3).and_return(true)
-        checker.is_prime?(3).should be_true
+        expect(checker.is_prime?(3)).to be true
       end
 
       it "returns false for 4 when the cache is empty" do
         cache.should_receive(:has?).with(4).and_return(false)
         cache.should_receive(:empty?).and_return true
-        checker.is_prime?(4).should be_false
+        expect(checker.is_prime?(4)).to be false
       end
 
       it "returns false for 9 when the highest number in cache is 11" do
         cache.should_receive(:has?).with(9).and_return(false)
         cache.should_receive(:empty?).and_return false
         cache.should_receive(:last).and_return(11)
-        checker.is_prime?(9).should be_false
+        expect(checker.is_prime?(9)).to be false
       end
 
       it "returns false for 9 but the highest number in cache is 7" do
         cache.should_receive(:has?).with(9).and_return(false)
         cache.should_receive(:empty?).and_return false
         cache.should_receive(:last).and_return(7)
-        checker.is_prime?(9).should be_false
+        expect(checker.is_prime?(9)).to be false
       end
     end
   end
@@ -39,7 +39,7 @@ describe Math::PrimeCheckerCached do
 
     it "returns false for 341 (pseudoprime)" do
       mock_cache_file_content([2,3,5,7,11,13])
-      checker.is_prime?(341).should be_false
+      expect(checker.is_prime?(341)).to be false
     end
   end
 end

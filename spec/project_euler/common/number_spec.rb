@@ -6,11 +6,11 @@ describe Common::Number do
 
 	  describe "#palindromic" do
 	    it "should return true for 9009" do
-	      number.is_palindromic?(9009).should be_true
+	    	expect(number.is_palindromic?(9009)).to be true
 	    end
 
 	    it "should return false for 9008" do
-	      number.is_palindromic?(9008).should be_false
+	    	expect(number.is_palindromic?(9008)).to be false
 	    end
 	  end
 

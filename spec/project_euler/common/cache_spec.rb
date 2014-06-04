@@ -36,12 +36,12 @@ describe Common::Cache do
     describe "#empty?" do
       it "returns true if the cache is empty" do
         mock_cache_file_content([])
-        cache.empty?.should be_true
+        expect(cache.empty?).to be true
       end
 
       it "returns false if the cache is not empty" do
         mock_cache_file_content([2,3])
-        cache.empty?.should be_false
+        expect(cache.empty?).to be false
       end
     end
 
@@ -49,27 +49,27 @@ describe Common::Cache do
       it "returns true if the cache has the given number" do
         mock_cache_file_content([3, 2])
         arrays.should_receive(:binary_search).with(3, [2, 3]).and_return(1)
-        cache.has?(3).should be_true
+        expect(cache.has?(3)).to be true
       end
 
       it "returns false if the cache does not have the given number" do
         mock_cache_file_content([3, 2])
         arrays.should_receive(:binary_search).with(5, [2, 3]).and_return(nil)
-        cache.has?(5).should be_false
+        expect(cache.has?(5)).to be false
       end
     end
 
     describe "#last" do
       it "returns the last entry from the cache" do
         mock_cache_file_content([3, 2])
-        cache.last.should eq 3
+        expect(cache.last).to eq 3
       end
     end
 
     describe "#sub" do
       it "returns the numbers from the cache using the given range" do
         mock_cache_file_content([2, 3, 5, 7])
-        cache.sub(1..3).should eq [3,5,7]
+        expect(cache.sub(1..3)).to eq [3,5,7]
       end
     end
 
@@ -77,13 +77,13 @@ describe Common::Cache do
       it "returns the position of a number in the cache" do
         mock_cache_file_content([3, 2])
         arrays.should_receive(:binary_search).with(3, [2, 3]).and_return 1
-        cache.find(3).should eq 1
+        expect(cache.find(3)).to eq 1
       end
 
       it "returns nil if the number is not found in the cache" do
         mock_cache_file_content([3, 2])
         arrays.should_receive(:binary_search).with(5, [2, 3]).and_return nil
-        cache.find(5).should be_nil
+        expect(cache.find(5)).to be nil
       end
     end
 
