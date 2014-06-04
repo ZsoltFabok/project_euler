@@ -16,13 +16,13 @@ describe Math::PrimeFactorsCached do
 
     it "returns [11, 13] for 143" do
       write_array_to_file(cach_file, [2,3,5,7,11,13])
-      factors.factors(143).should eq [11, 13]
+      expect(factors.factors(143)).to eq [11, 13]
     end
 
      it "fills up the cache with prime numbers" do
       create_empty_file(cach_file)
       factors.factors(143)
-      read_array_from_file(cach_file).should eq [2,3,5,7,11,13]
+      expect(read_array_from_file(cach_file)).to eq [2,3,5,7,11,13]
     end
   end
 end

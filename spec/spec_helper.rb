@@ -16,8 +16,8 @@ require File.expand_path('../../lib/project_euler', __FILE__)
 
 def mock_cache_file_content(numbers)
   file_content = double
-  File.should_receive(:open).with("data/prime_numbers.txt", "r").and_yield(file_content)
-  file_content.should_receive(:readlines).and_return(numbers.map {|n| "#{n}\n"})
+  expect(File).to receive(:open).with("data/prime_numbers.txt", "r").and_yield(file_content)
+  expect(file_content).to receive(:readlines).and_return(numbers.map {|n| "#{n}\n"})
 end
 
 def read_array_from_file(file_name)

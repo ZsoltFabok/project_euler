@@ -7,27 +7,27 @@ describe Math::PrimeCheckerCached do
 
     describe "#is_prime?" do
       it "returns true for 3 when 3 is stored in the cache" do
-        cache.should_receive(:has?).with(3).and_return(true)
+        expect(cache).to receive(:has?).with(3).and_return(true)
         expect(checker.is_prime?(3)).to be true
       end
 
       it "returns false for 4 when the cache is empty" do
-        cache.should_receive(:has?).with(4).and_return(false)
-        cache.should_receive(:empty?).and_return true
+        expect(cache).to receive(:has?).with(4).and_return(false)
+        expect(cache).to receive(:empty?).and_return true
         expect(checker.is_prime?(4)).to be false
       end
 
       it "returns false for 9 when the highest number in cache is 11" do
-        cache.should_receive(:has?).with(9).and_return(false)
-        cache.should_receive(:empty?).and_return false
-        cache.should_receive(:last).and_return(11)
+        expect(cache).to receive(:has?).with(9).and_return(false)
+        expect(cache).to receive(:empty?).and_return false
+        expect(cache).to receive(:last).and_return(11)
         expect(checker.is_prime?(9)).to be false
       end
 
       it "returns false for 9 but the highest number in cache is 7" do
-        cache.should_receive(:has?).with(9).and_return(false)
-        cache.should_receive(:empty?).and_return false
-        cache.should_receive(:last).and_return(7)
+        expect(cache).to receive(:has?).with(9).and_return(false)
+        expect(cache).to receive(:empty?).and_return false
+        expect(cache).to receive(:last).and_return(7)
         expect(checker.is_prime?(9)).to be false
       end
     end

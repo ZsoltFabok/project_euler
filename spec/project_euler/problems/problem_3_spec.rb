@@ -6,14 +6,14 @@ describe Problems::Problem3 do
     subject(:problem) {Problems::Problem3.new(primes)}
 
     it "should return 29 as the largest prime factor of 13195" do
-      primes.should_receive(:factors).with(13195).and_return([5, 7, 13, 29])
-      problem.calculate(13195).should eq 29
+      expect(primes).to receive(:factors).with(13195).and_return([5, 7, 13, 29])
+      expect(problem.calculate(13195)).to eq 29
     end
   end
 
   context "#execute" do
     it "should return 6857 as the largest prime factor of 600851475143", slow: true do
-      Problems::Problem3.execute.should eq 6857
+      expect(Problems::Problem3.execute).to eq 6857
     end
   end
 end

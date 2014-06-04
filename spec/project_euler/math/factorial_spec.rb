@@ -5,11 +5,11 @@ describe Math::Factorial do
 
   context "#get" do
     it "should return 1 for 1" do
-      factorial.get(1).should eq 1
+      expect(factorial.get(1)).to eq 1
     end
 
     it "should return 6 for 3" do
-      factorial.get(3).should eq 6
+      expect(factorial.get(3)).to eq 6
     end
   end
 end

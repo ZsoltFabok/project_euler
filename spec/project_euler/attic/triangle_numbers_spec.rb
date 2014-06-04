@@ -6,9 +6,9 @@ describe Attic::TriangleNumbers do
     subject(:triangle_numbers) {Attic::TriangleNumbers.create}
 
     it "returns the next triangle number" do
-      triangle_numbers.next.should eq 1
-      triangle_numbers.next.should eq 3
-      triangle_numbers.next.should eq 6
+      expect(triangle_numbers.next).to eq 1
+      expect(triangle_numbers.next).to eq 3
+      expect(triangle_numbers.next).to eq 6
     end
   end
 end

@@ -9,8 +9,8 @@ describe Common::Cache do
 
     describe "#load" do
       it "loads the files from the given file" do
-        File.should_receive(:open).with(file_name, "r").and_yield(file)
-        file.should_receive(:readlines).and_return(["2\n", "3\n"])
+        expect(File).to receive(:open).with(file_name, "r").and_yield(file)
+        expect(file).to receive(:readlines).and_return(["2\n", "3\n"])
         cache.load
       end
     end
@@ -18,17 +18,17 @@ describe Common::Cache do
     describe "#save" do
       it "updates the cache with the new prime" do
         mock_cache_file_content([2])
-        File.should_receive(:open).with(file_name, "a+").and_yield(file)
-        file.should_receive(:write).with("3\n")
+        expect(File).to receive(:open).with(file_name, "a+").and_yield(file)
+        expect(file).to receive(:write).with("3\n")
         cache.save(3)
       end
 
       it "updates the cache with primes" do
         mock_cache_file_content([2])
-        File.should_receive(:open).with(file_name, "a+").and_yield(file)
-        file.should_receive(:write).with("3\n")
-        file.should_receive(:write).with("5\n")
-        file.should_receive(:write).with("7\n")
+        expect(File).to receive(:open).with(file_name, "a+").and_yield(file)
+        expect(file).to receive(:write).with("3\n")
+        expect(file).to receive(:write).with("5\n")
+        expect(file).to receive(:write).with("7\n")
         cache.save([3, 5, 7])
       end
     end
@@ -48,13 +48,13 @@ describe Common::Cache do
     describe "#has?" do
       it "returns true if the cache has the given number" do
         mock_cache_file_content([3, 2])
-        arrays.should_receive(:binary_search).with(3, [2, 3]).and_return(1)
+        expect(arrays).to receive(:binary_search).with(3, [2, 3]).and_return(1)
         expect(cache.has?(3)).to be true
       end
 
       it "returns false if the cache does not have the given number" do
         mock_cache_file_content([3, 2])
-        arrays.should_receive(:binary_search).with(5, [2, 3]).and_return(nil)
+        expect(arrays).to receive(:binary_search).with(5, [2, 3]).and_return(nil)
         expect(cache.has?(5)).to be false
       end
     end
@@ -76,13 +76,13 @@ describe Common::Cache do
     describe "#find" do
       it "returns the position of a number in the cache" do
         mock_cache_file_content([3, 2])
-        arrays.should_receive(:binary_search).with(3, [2, 3]).and_return 1
+        expect(arrays).to receive(:binary_search).with(3, [2, 3]).and_return 1
         expect(cache.find(3)).to eq 1
       end
 
       it "returns nil if the number is not found in the cache" do
         mock_cache_file_content([3, 2])
-        arrays.should_receive(:binary_search).with(5, [2, 3]).and_return nil
+        expect(arrays).to receive(:binary_search).with(5, [2, 3]).and_return nil
         expect(cache.find(5)).to be nil
       end
     end
@@ -91,16 +91,16 @@ describe Common::Cache do
       it "returns the next element" do
         mock_cache_file_content([2, 3, 5])
         enumerator = cache.enumerator
-        enumerator.next.should eq 2
-        enumerator.next.should eq 3
+        expect(enumerator.next).to eq 2
+        expect(enumerator.next).to eq 3
       end
 
       it "new enumerator new enumeration" do
         mock_cache_file_content([2, 3, 5])
         enumerator = cache.enumerator
-        enumerator.next.should eq 2
+        expect(enumerator.next).to eq 2
         enumerator = cache.enumerator
-        enumerator.next.should eq 2
+        expect(enumerator.next).to eq 2
       end
 
       it "returns nil after reaching the end of the collection" do
@@ -108,18 +108,18 @@ describe Common::Cache do
         enumerator = cache.enumerator
         enumerator.next
         enumerator.next
-        enumerator.next.should be_nil
+        expect(enumerator.next).to be_nil
       end
     end
     def mock_cache_file_content(numbers)
-      File.stub(:open).with(file_name, "r").and_yield(file)
-      file.stub(:readlines).and_return(numbers.map {|n| "#{n}\n"})
+      expect(File).to receive(:open).with(file_name, "r").and_yield(file)
+      expect(file).to receive(:readlines).and_return(numbers.map {|n| "#{n}\n"})
     end
   end
 
   context "integration" do
     it "creates a new instance" do
-      Common::Cache.create.class.should eq Common::Cache
+      expect(Common::Cache.create.class).to eq Common::Cache
     end
   end
 end

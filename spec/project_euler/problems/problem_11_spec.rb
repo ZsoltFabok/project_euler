@@ -13,9 +13,9 @@ describe Problems::Problem11 do
               00 00 00 00 00 00 00
               00 00 00 00 00 05 00
               00 00 00 00 00 05 00"
-      arrays.stub(:multiply).and_return 1
-      arrays.should_receive(:multiply).with([5, 5, 5, 5]).and_return(5**4)
-      problem.calculate(grid).should eq 5**4
+      allow(arrays).to receive(:multiply).and_return 1
+      expect(arrays).to receive(:multiply).with([5, 5, 5, 5]).and_return(5**4)
+      expect(problem.calculate(grid)).to eq 5**4
     end
 
     it "returns 625 as a horisontal match for the grid below" do
@@ -26,9 +26,9 @@ describe Problems::Problem11 do
               00 00 00 00 00 00 00
               00 00 00 00 00 00 00
               00 00 05 05 05 05 00"
-      arrays.stub(:multiply).and_return 1
-      arrays.should_receive(:multiply).with([5, 5, 5, 5]).and_return(5**4)
-      problem.calculate(grid).should eq 5**4
+      allow(arrays).to receive(:multiply).and_return 1
+      expect(arrays).to receive(:multiply).with([5, 5, 5, 5]).and_return(5**4)
+      expect(problem.calculate(grid)).to eq 5**4
     end
 
     it "returns 625 as a diagonal up match for the grid below" do
@@ -39,9 +39,9 @@ describe Problems::Problem11 do
               00 00 00 00 00 00 00
               00 00 00 00 00 05 00
               00 00 00 00 00 05 00"
-      arrays.stub(:multiply).and_return 1
-      arrays.should_receive(:multiply).with([5, 5, 5, 5]).and_return(5**4)
-      problem.calculate(grid).should eq 5**4
+      allow(arrays).to receive(:multiply).and_return 1
+      expect(arrays).to receive(:multiply).with([5, 5, 5, 5]).and_return(5**4)
+      expect(problem.calculate(grid)).to eq 5**4
     end
 
     it "returns 32719995 for the grid below ([49, 95, 71, 99])" do
@@ -52,15 +52,15 @@ describe Problems::Problem11 do
               22 31 16 71 51 67 63
               24 47 32 60 99 03 45
               32 98 81 28 64 23 69"
-      arrays.stub(:multiply).and_return 1
-      arrays.should_receive(:multiply).with([49, 95, 71, 99]).and_return(32719995)
-      problem.calculate(grid).should eq 32719995
+      allow(arrays).to receive(:multiply).and_return 1
+      expect(arrays).to receive(:multiply).with([49, 95, 71, 99]).and_return(32719995)
+      expect(problem.calculate(grid)).to eq 32719995
     end
   end
 
   context "#execute" do
     it "returns 70600674 for the grid" do
-      Problems::Problem11.execute.should eq 70600674
+      expect(Problems::Problem11.execute).to eq 70600674
     end
   end
 end

@@ -7,13 +7,13 @@ describe Math::PrimeEnumerator do
 
     describe "#next" do
   		it "returns the next prime number" do
-        checker.should_receive(:is_prime?).with(2).and_return true
-  			checker.should_receive(:is_prime?).with(3).and_return true
-  			checker.should_not_receive(:is_prime?).with(4)
-  			checker.should_receive(:is_prime?).with(5).and_return true
-  			enumerator.next.should eq 2
-  			enumerator.next.should eq 3
-  			enumerator.next.should eq 5
+        expect(checker).to receive(:is_prime?).with(2).and_return true
+  			expect(checker).to receive(:is_prime?).with(3).and_return true
+  			expect(checker).not_to receive(:is_prime?).with(4)
+  			expect(checker).to receive(:is_prime?).with(5).and_return true
+  			expect(enumerator.next).to eq 2
+  			expect(enumerator.next).to eq 3
+  			expect(enumerator.next).to eq 5
   		end
   	end
   end
@@ -22,9 +22,9 @@ describe Math::PrimeEnumerator do
     subject(:enumerator) {Math::PrimeEnumerator.create}
 
     it "returns the next prime number" do
-      enumerator.next.should eq 2
-      enumerator.next.should eq 3
-      enumerator.next.should eq 5
+      expect(enumerator.next).to eq 2
+      expect(enumerator.next).to eq 3
+      expect(enumerator.next).to eq 5
     end
   end
 end
