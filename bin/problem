@@ -12,7 +12,7 @@ if ARGV[0]
   end_ = start
 else
   start = 1
-  end_ = Problems.constants.size
+  end_ = Problems.constants.size-1
 end
 
 overall_time = 0
