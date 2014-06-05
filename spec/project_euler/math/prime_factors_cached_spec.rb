@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Math::PrimeFactorsCached do
   context "integration" do
     let(:cach_file) {"data/test_prime_numbers.txt"}
-    let(:cache) {Common::Cache.new(cach_file, Common::Arrays.new)}
+    let(:cache) {Common::Cache.new(Common::DataFile.new(cach_file), Common::Arrays.new)}
     subject(:factors) {Math::PrimeFactorsCached.create(cache)}
 
     before(:each) do

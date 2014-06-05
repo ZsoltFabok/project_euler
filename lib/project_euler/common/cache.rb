@@ -1,18 +1,14 @@
 module Common
   class Cache
-    def initialize(file_name, arrays)
-      @file_name = file_name
+    def initialize(data_file, arrays)
+      @data_file = data_file
       @arrays = arrays
     end
 
     def load
       if @cache.nil?
         @cache = []
-        File.open(@file_name, "r") do |f|
-          f.readlines.each do |line|
-            @cache << line.to_i
-          end
-        end
+        @cache = @data_file.read.map {|n| n.to_i}
         @cache.sort!
       end
     end
@@ -21,17 +17,10 @@ module Common
       load
       if number.class == Array
         @cache.concat(number)
-        File.open(@file_name, "a+") do |f|
-          number.each do |n|
-            f.write("#{n}\n")
-          end
-        end
       else
         @cache << number
-        File.open(@file_name, "a+") do |f|
-          f.write("#{number}\n")
-        end
       end
+      @data_file.save(number)
     end
 
     def empty?
@@ -59,18 +48,13 @@ module Common
       @arrays.binary_search(number, @cache)
     end
 
-    # def get(position)
-    #   load
-    #   @cache[position]
-    # end
-
     def enumerator
       load
       Enumerator.new(@cache)
     end
 
     def self.create
-      new("data/prime_numbers.txt", Common::Arrays.new)
+      new(DataFile.new("data/prime_numbers.txt"), Arrays.new)
     end
 
     class Enumerator

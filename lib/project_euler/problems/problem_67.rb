@@ -12,12 +12,13 @@ module Problems
   # Find the maximum total from top to bottom in triangle.txt (right click and 'Save Link/Target As...'),
   # a 15K text file containing a triangle with one-hundred rows.
   class Problem67
-    def initialize(problem18)
+    def initialize(problem18, data_file)
       @problem18 = problem18
+      @data_file = data_file
     end
 
     def self.execute
-      new(Problems::Problem18.new).calculate
+      new(Problems::Problem18.new, Common::DataFile.new("data/problem_67_input.txt")).calculate
     end
 
     def calculate
@@ -28,10 +29,8 @@ module Problems
     private
     def load_numbers_string_from_input_file
       numbers = ""
-      File.open("data/problem_67_input.txt", "r") do |f|
-        f.readlines.each do |line|
-          numbers << line << " "
-        end
+      @data_file.read.each do |entry|
+        numbers << entry << " "
       end
       numbers.chop
     end

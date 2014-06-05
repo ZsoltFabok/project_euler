@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Math::DivisorsCached do
   context "integration" do
   	let(:cach_file) {"data/test_prime_numbers.txt"}
-    let(:cache) {Common::Cache.new(cach_file, Common::Arrays.new)}
+    let(:cache) {Common::Cache.new(Common::DataFile.new(cach_file), Common::Arrays.new)}
     subject(:divisors) {Math::DivisorsCached.create(cache)}
 
     before(:each) do
