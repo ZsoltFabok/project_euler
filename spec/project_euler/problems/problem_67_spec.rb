@@ -1,12 +1,10 @@
 require 'spec_helper'
 
 describe Problems::Problem67 do
-  let(:problem18) {double}
-  let(:data_file) {double}
-  subject(:problem) {Problems::Problem67.new(problem18, data_file)}
-
   context "#calculate" do
-    let(:file_content) {double}
+    let(:problem18) {double}
+    let(:data_file) {double}
+    subject(:problem) {Problems::Problem67.new(problem18, data_file)}
 
     it "loads the triangle from a file and uses problem18 for calculation" do
       expect(data_file).to receive(:read).and_return(["3","7 4"])

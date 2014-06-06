@@ -1,11 +1,12 @@
 require 'spec_helper'
 
 describe Problems::Problem16 do
-  let(:arrays) {double}
-  let(:number) {double}
-  subject(:problem) {Problems::Problem16.new(arrays, number)}
 
   context "#calculate" do
+    let(:arrays) {double}
+    let(:number) {double}
+    subject(:problem) {Problems::Problem16.new(arrays, number)}
+
     it "returns 26 as the sum of the digits of the number 2^15" do
       expect(arrays).to receive(:sum).with([3,2,7,6,8]).and_return(26)
       expect(number).to receive(:digits).with(32768).and_return([3,2,7,6,8])

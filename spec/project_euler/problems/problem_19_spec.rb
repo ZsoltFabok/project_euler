@@ -1,9 +1,10 @@
 require 'spec_helper'
 
 describe Problems::Problem19 do
-  subject(:problem) {Problems::Problem19.new}
 
   context "#calculate" do
+    subject(:problem) {Problems::Problem19.new}
+
     it "returns 2 for the year 1900 (April and July)" do
       expect(problem.calculate("1900-01-01", "1900-12-31")).to eq 2
     end

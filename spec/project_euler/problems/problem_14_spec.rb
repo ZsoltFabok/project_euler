@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe Problems::Problem14 do
-	subject(:problem) {Problems::Problem14.new}
+  context "#calculate" do
+  	subject(:problem) {Problems::Problem14.new}
 
-	context "#calculate" do
 		it "returns 1 for 1 because of 1 (1)" do
 			expect(problem.calculate(1)).to eq 1
 		end

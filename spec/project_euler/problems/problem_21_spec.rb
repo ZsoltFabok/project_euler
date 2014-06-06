@@ -1,11 +1,12 @@
 require 'spec_helper'
 
 describe Problems::Problem21 do
-  let(:divisors) {double}
-  let(:arrays) {double}
-  subject(:problem) {Problems::Problem21.new(divisors, arrays)}
 
   context "#calculate" do
+    let(:divisors) {double}
+    let(:arrays) {double}
+    subject(:problem) {Problems::Problem21.new(divisors, arrays)}
+
     it "0 is the sum of all the amicable numbers under 4" do
       expect(divisors).to receive(:get).with(2).and_return([1, 2])
       expect(divisors).to receive(:get).with(3).and_return([1, 3])

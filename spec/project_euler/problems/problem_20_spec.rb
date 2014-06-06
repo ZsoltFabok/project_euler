@@ -1,12 +1,13 @@
 require 'spec_helper'
 
 describe Problems::Problem20 do
-  let(:arrays) {double}
-  let(:factorial) {double}
-  let(:number) {double}
-  subject(:problem) {Problems::Problem20.new(arrays, factorial, number)}
 
   context "#calculate" do
+    let(:arrays) {double}
+    let(:factorial) {double}
+    let(:number) {double}
+    subject(:problem) {Problems::Problem20.new(arrays, factorial, number)}
+
     it "returns 2 for 2!" do
       expect(factorial).to receive(:get).with(2).and_return(2)
       expect(number).to receive(:digits).with(2).and_return([2])
