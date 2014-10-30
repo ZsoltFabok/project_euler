@@ -1,3 +1,13 @@
 Gemfile.lock
 .rbenv-version*
 coverage
+
+
+# intellij idea
+*.ipr
+*.iws
+*.iml
+
+# gradle
+build
+.gradle
