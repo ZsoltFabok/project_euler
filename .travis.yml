@@ -5,3 +5,5 @@ rvm:
 
 before_script:
   rvm use 2.1.1 --install --binary --fuzzy
+
+sudo: false
