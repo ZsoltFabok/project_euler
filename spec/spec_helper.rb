@@ -1,5 +1,5 @@
 require 'rspec'
-require 'debugger'
+require 'byebug'
 require 'coveralls'
 require 'simplecov'
 

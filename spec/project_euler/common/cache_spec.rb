@@ -1,5 +1,5 @@
 require 'spec_helper'
-
+ 
 describe Common::Cache do
   context "unit" do
     let(:data_file) {double}

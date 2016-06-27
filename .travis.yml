@@ -1,13 +1,7 @@
-language: scala
+language: ruby
 
 rvm:
   - 2.1.1
 
-scala:
-  - 2.10.3
-
 before_script:
   rvm use 2.1.1 --install --binary --fuzzy
-
-script:
-  ./scripts/run_tests.sh
